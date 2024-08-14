@@ -4,38 +4,16 @@
 
 The code in this repository is a star/planets engine in an Arduino library.
 
-The ready-made Arduino library zip file can be found by clicking on **Releases**.
+# Change Notes
+<img width="100%" align="left" src="screen.jpg">
+<img width="100%" align="left" src="all.jpg">
+What i want is to test this awesome project on a minial settings. You should install the starmap library from shabaz123 first. I use Nologo ESP32C3 Super Mini to connect with GC9A01 LCD but it should work with any other ESP32 or maybe even ESP8266 ( need change Wifi library)
+- Using GeoIP library for approximated lattitude and longtitude as well as current timezone. Thanks to https://github.com/mmarkin/GeoIP/tree/main 
+- Using NTP to update time
+- Store Yale star map as variable on flash ( for 4MBit Flash, default partition will reach 97% of program flash, with NoOTA 2MB/2MB scheme, it will be around 60%)
+- Remove all satellite and flags parts ( maybe will try to find a way in future to add this feature back)
 
-If you want to build the library from source, you can clone the code into a folder onto your Linux machine, then go into the starmap folder, and type:
-
-```
-chmod 755 make_libraries.py
-./make_libraries.py
-```
-
-The output will be two zip files, one folder up from the starmap folder. The zip file titled **starmap_library-1.0.0.zip** will be the bundled library that you can add into the Arduino development environment (using **Sketch->Include Library->Add .ZIP file**).
-
-The other zip file that will be generated, called **starmap_lib.zip** is useful for CMake projects for non-Arduino platforms, such as Pi Pico C/C++ SDK. It can be ignored if you're using Arduino.
-
-If you wish to test the code on Linux, prior to uploading to any microcontroller, then you can do that by typing:
-
-```
-cd starmap/examples/StarmapLinuxTest
-mkdir -p build
-cd build
-cmake ..
-make
-```
-
-By doing that, a **starmap** Linux executable will be built in the build folder. Note that you may need to install **libpng** on your Linux machine beforehand (on Ubuntu, you can type **sudo apt install libpng**). You can run the starmap executable by typing:
-
-```
-./starmap
-```
-
-It will generate a star chart PNG file (called out.png) which can be inspected.
-
-
+**** Remember to change the ssid1/password1 and ssid2/password2 to your own.
 ## Acknowledgement
 
 Note: This code uses content from https://www.fourmilab.ch/homeplanet/ (public domain code).
